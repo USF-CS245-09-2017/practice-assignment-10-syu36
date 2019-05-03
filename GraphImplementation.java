@@ -4,10 +4,18 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+/**
+ *
+ * Implementation of a graph with topological sort.
+ *
+ */
 public class GraphImplementation implements Graph {
 	int[][] adjMatrix;
 	int vertices;
 
+	/**
+	 * Initializes the adjacency matrix to the number of vertices
+	 */
 	public GraphImplementation(int vertices) {
 		adjMatrix = new int[vertices][vertices];
 		this.vertices = vertices;
@@ -36,6 +44,7 @@ public class GraphImplementation implements Graph {
 			incident[j] = incidents;
 		}
 
+		// Queue of vertices to run through
 		Queue<Integer> toVisit = new LinkedList<Integer>();
 		ArrayList<Integer> sorted = new ArrayList<Integer>();
 
@@ -67,7 +76,7 @@ public class GraphImplementation implements Graph {
 			System.out.println(i);
 		}
 
-		// print message if not valid graph for topological (e.g. cycle)
+		// print message if not valid graph for topological (e.g. cycle occurs)
 		if (visited != vertices) {
 			System.out.println("Topological sort not possible.");
 		}
